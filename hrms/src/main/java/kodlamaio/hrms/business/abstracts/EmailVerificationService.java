@@ -9,5 +9,5 @@ import kodlamaio.hrms.entities.concretes.EmailVerification;
 public interface EmailVerificationService {
 	DataResult<List<EmailVerification>> getAll();
 	Result sendCodeToEmail(EmailVerification emailVerification);
-	Result confirmedCodeRequest(EmailVerification emailVerification);
+
 }

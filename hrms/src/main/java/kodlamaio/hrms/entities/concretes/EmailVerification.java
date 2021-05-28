@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,8 +36,8 @@ public class EmailVerification {
 	//private User user;
 	
 	
-	@Column(name = "user_id")
-	private int userId;
+//	@Column(name = "user_id")
+//	private int userId;
 	
 	@Column(name = "is_verified")
 	private boolean isVerified;
@@ -46,4 +47,9 @@ public class EmailVerification {
 
 	@Column(name = "activation_date")
 	private LocalDate activationDate;
+	
+	
+	@ManyToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
 }

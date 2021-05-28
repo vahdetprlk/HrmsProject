@@ -29,18 +29,11 @@ public class EmailVerificationManager implements EmailVerificationService{
 
 	@Override
 	public Result sendCodeToEmail(EmailVerification emailVerification) {
-		emailVerification.setVerified(false);
+		emailVerification.setVerified(true);
 		this.emailVerificationDao.save(emailVerification);
-		return new SuccessResult("Doğrulama Emaili Gönderildi");
+		return new SuccessResult("EMail Doğrulandı");
 	}
 
-	@Override
-	public Result confirmedCodeRequest(EmailVerification emailVerification) {
-	EmailVerification emailVerificationInDB = this.emailVerificationDao.findById(emailVerification.getId()).get();
-	emailVerificationInDB.setVerified(true);
-	
-	this.emailVerificationDao.save(emailVerificationInDB);
-		return new SuccessResult("Kod Onaylandı");
-	}
+
 
 }

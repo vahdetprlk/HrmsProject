@@ -33,7 +33,7 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public Result add(Employer employer) {
-
+		String[] splitMail = employer.getEmail().split("@");
 		if (employer.getEmail().isBlank()) {
 
 			return new ErrorResult("Email bilgisi giriniz");
@@ -63,6 +63,12 @@ public class EmployerManager implements EmployerService {
 			return new ErrorResult("Bu mail ile kayıtlı bir kullanıcı mevcut.");
 
 		}
+		
+		else if (!splitMail[1].equals(employer.getWebSite())) {
+			return new ErrorResult("Emailiniz Şirket Domainli Olmalıdır.");
+		}
+		
+	
 
 		this.employerDao.save(employer);
 		return new SuccessResult("İşveren Sisteme eklendi");
