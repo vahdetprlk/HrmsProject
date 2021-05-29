@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerService;
 
+import kodlamaio.hrms.core.utilities.adapters.service.FakeCheckService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -20,11 +21,13 @@ import kodlamaio.hrms.entities.concretes.JobSeeker;
 public class JobSeekerManager implements JobSeekerService {
 
 	private JobSeekerDao jobSeekerDao;
+	private FakeCheckService fakeCheckService;
 
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao,FakeCheckService fakeCheckService) {
 		super();
 		this.jobSeekerDao = jobSeekerDao;
+		this.fakeCheckService = fakeCheckService;
 
 	}
 
@@ -72,6 +75,11 @@ public class JobSeekerManager implements JobSeekerService {
 		return new ErrorResult("Bu TcKimlik Numarası ile kayıtlı bir kullanıcı mevcut.");
 
 	}
+		 else if (this.fakeCheckService.fakeMernisVerification(jobSeeker)==false) {
+
+				return new ErrorResult("Mernis Doğrulaması Sağlanamadı");
+
+			}
 
 		{
 
