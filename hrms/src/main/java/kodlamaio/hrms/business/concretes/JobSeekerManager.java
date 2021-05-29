@@ -79,10 +79,12 @@ public class JobSeekerManager implements JobSeekerService {
 
 				return new ErrorResult("Mernis Doğrulaması Sağlanamadı");
 
+			}else if(!jobSeeker.getPassword().equals(jobSeeker.getPasswordAgain())) {
+				
+				return new ErrorResult("Şifre tekrarı uyuşmuyor.");
+
 			}
-
-		{
-
+			
 			this.jobSeekerDao.save(jobSeeker);
 			return new SuccessResult("Kullanıcı İş Arayan Listesine Eklendi");
 
@@ -90,4 +92,3 @@ public class JobSeekerManager implements JobSeekerService {
 
 	}
 
-}
