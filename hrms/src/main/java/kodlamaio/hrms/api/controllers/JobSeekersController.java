@@ -35,10 +35,5 @@ public class JobSeekersController {
 
 	}
 
-	@PostMapping("/add")
-	public Result add(@RequestBody JobSeeker jobSeeker) {
-		
-		return this.jobSeekerService.add(jobSeeker);
 
-	}
 }

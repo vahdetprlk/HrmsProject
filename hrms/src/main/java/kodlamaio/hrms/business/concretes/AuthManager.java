@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.AuthService;
-import kodlamaio.hrms.business.abstracts.EmailVerificationService2;
+import kodlamaio.hrms.business.abstracts.EmailVerificationService;
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.abstracts.JobSeekerService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
@@ -19,11 +19,11 @@ public class AuthManager implements AuthService {
 
 	private JobSeekerService jobSeekerService;
 	private EmployerService employerService;
-	private EmailVerificationService2 emailVerificationService2;
+	private EmailVerificationService emailVerificationService2;
 
 	@Autowired
 	public AuthManager(JobSeekerService jobSeekerManager, EmployerService employerService,
-			EmailVerificationService2 emailVerificationService2) {
+			EmailVerificationService emailVerificationService2) {
 		super();
 		this.jobSeekerService = jobSeekerManager;
 		this.employerService = employerService;

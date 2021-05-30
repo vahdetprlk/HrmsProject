@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.util.List;
+
+import java.time.LocalDate;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,26 +14,56 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmailVerificationDao;
 import kodlamaio.hrms.entities.concretes.EmailVerification;
+import kodlamaio.hrms.entities.concretes.User;
 @Service
 public class EmailVerificationManager implements EmailVerificationService{
-		private	EmailVerificationDao emailVerificationDao;
-		@Autowired
-	public EmailVerificationManager(EmailVerificationDao emailVerificationDao) {
-			super();
-			this.emailVerificationDao = emailVerificationDao;
-		}
 
-	@Override
-	public DataResult<List<EmailVerification>> getAll() {
-		
-		return new SuccessDataResult<List<EmailVerification>>(this.emailVerificationDao.findAll(), "Aktivasyon Listesi Getirildi");
+	
+	private EmailVerificationDao emailVerificationDao; 
+	
+	@Autowired
+	public EmailVerificationManager(EmailVerificationDao emailVerificationDao) {
+		super();
+		this.emailVerificationDao = emailVerificationDao;
 	}
 
 	@Override
-	public Result sendCodeToEmail(EmailVerification emailVerification) {
-		emailVerification.setVerified(true);
+	public Result add(User user, EmailVerification emailVerification) {
+	
+		
+		UUID uuid = UUID.randomUUID();
+		String activationCode = uuid.toString();
+		
+	
+		emailVerification.setActivationCode(activationCode);
+		emailVerification.setActivationDate(LocalDate.now());
+		emailVerification.setVerified(false);
+		emailVerification.setUser(user);
+		
+		
+		
 		this.emailVerificationDao.save(emailVerification);
-		return new SuccessResult("EMail Doğrulandı");
+		return new SuccessResult("Aktivasyon Eklendi");
+	}
+
+	@Override
+	public Result update(EmailVerification emailVerification) {
+		this.emailVerificationDao.save(emailVerification);
+		return new SuccessResult("Aktivasyon Güncellendi");
+	}
+
+	@Override
+	public DataResult<EmailVerification> getByUserIdAndId(int userId, int id) {
+		
+		return new SuccessDataResult<EmailVerification>(this.emailVerificationDao.findByUserIdAndId(userId, id));
+	}
+
+	@Override
+	public Result sendEmail(User user) {
+		
+		return new SuccessResult(user.getEmail());
+		
+		
 	}
 
 
