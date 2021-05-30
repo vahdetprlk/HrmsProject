@@ -19,7 +19,7 @@ public class AuthManager implements AuthService {
 
 	private JobSeekerService jobSeekerService;
 	private EmployerService employerService;
-	private EmailVerificationService emailVerificationService2;
+	private EmailVerificationService emailVerificationService;
 
 	@Autowired
 	public AuthManager(JobSeekerService jobSeekerManager, EmployerService employerService,
@@ -27,7 +27,7 @@ public class AuthManager implements AuthService {
 		super();
 		this.jobSeekerService = jobSeekerManager;
 		this.employerService = employerService;
-		this.emailVerificationService2 = emailVerificationService2;
+		this.emailVerificationService = emailVerificationService2;
 	}
 
 	@Override
@@ -41,11 +41,11 @@ public class AuthManager implements AuthService {
 		} else {
 
 			EmailVerification emailVerification = new EmailVerification();
-			this.emailVerificationService2.add(jobSeeker, emailVerification);
+			this.emailVerificationService.add(jobSeeker, emailVerification);
 
-			this.emailVerificationService2.sendEmail(jobSeeker);
+			this.emailVerificationService.sendEmail(jobSeeker);
 			return new SuccessResult("Kullanıcı Kaydedildi ve Aktivasyon Maili Gönderildi =  "
-					+ this.emailVerificationService2.sendEmail(jobSeeker).getMessage());
+					+ this.emailVerificationService.sendEmail(jobSeeker).getMessage());
 		}
 
 	}
@@ -61,11 +61,11 @@ public class AuthManager implements AuthService {
 		} else {
 
 			EmailVerification emailVerification = new EmailVerification();
-			this.emailVerificationService2.add(employer, emailVerification);
+			this.emailVerificationService.add(employer, emailVerification);
 
-			this.emailVerificationService2.sendEmail(employer);
+			this.emailVerificationService.sendEmail(employer);
 			return new SuccessResult("Kullanıcı Kaydedildi ve Aktivasyon Maili Gönderildi =  "
-					+ this.emailVerificationService2.sendEmail(employer).getMessage());
+					+ this.emailVerificationService.sendEmail(employer).getMessage());
 		}
 
 	}
@@ -73,9 +73,9 @@ public class AuthManager implements AuthService {
 	@Override
 	public Result verifyUserByEmail(int userId, int id) {
 
-		EmailVerification emailVerificationInDataBase = this.emailVerificationService2.getByUserIdAndId(userId, id).getData();
+		EmailVerification emailVerificationInDataBase = this.emailVerificationService.getByUserIdAndId(userId, id).getData();
 		emailVerificationInDataBase.setVerified(true);
-		this.emailVerificationService2.update(emailVerificationInDataBase);
+		this.emailVerificationService.update(emailVerificationInDataBase);
 
 		return new SuccessResult("Email Aktivasyonu Tamamlandı");
 	}
