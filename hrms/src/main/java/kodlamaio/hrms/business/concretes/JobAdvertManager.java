@@ -41,9 +41,9 @@ public class JobAdvertManager implements JobAdvertService{
 	}
 
 	@Override
-	public DataResult<List<JobAdvert>> getAllByActiveTrue() {
+	public DataResult<List<JobAdvert>> getAllByActiveTrue(boolean isActive) {
 		
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByActiveTrue(), "Aktif İlanlar Listelendi");
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByIsActive(isActive), "Aktif İlanlar Listelendi");
 		
 	}
 
@@ -59,10 +59,12 @@ public class JobAdvertManager implements JobAdvertService{
 	
 
 	@Override
-	public DataResult<List<JobAdvert>> getAllByEmployerIdAndActive(int id, boolean isActive) {
+	public DataResult<List<JobAdvert>> getAllByEmployerIdAndActiveTrue(int id, boolean isActive) {
 		
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByEmployer_IdAndActive(id, true), "Data Listelendi");
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByEmployer_IdAndIsActive(id,isActive), "Data Listelendi");
 	}
+
+
 }
 
 
