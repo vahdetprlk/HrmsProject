@@ -6,7 +6,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.EmailVerification;
 import kodlamaio.hrms.entities.concretes.User;
 
-public interface EmailVerificationService {
+public interface EmailVerificationService2 {
 	Result add(User user,EmailVerification emailVerification);
 	 
 	Result sendEmail(User user);

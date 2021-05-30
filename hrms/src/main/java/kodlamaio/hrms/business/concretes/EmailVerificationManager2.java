@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.EmailVerificationService;
+import kodlamaio.hrms.business.abstracts.EmailVerificationService2;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
@@ -16,13 +16,13 @@ import kodlamaio.hrms.dataAccess.abstracts.EmailVerificationDao;
 import kodlamaio.hrms.entities.concretes.EmailVerification;
 import kodlamaio.hrms.entities.concretes.User;
 @Service
-public class EmailVerificationManager implements EmailVerificationService{
+public class EmailVerificationManager2 implements EmailVerificationService2{
 
 	
 	private EmailVerificationDao emailVerificationDao; 
 	
 	@Autowired
-	public EmailVerificationManager(EmailVerificationDao emailVerificationDao) {
+	public EmailVerificationManager2(EmailVerificationDao emailVerificationDao) {
 		super();
 		this.emailVerificationDao = emailVerificationDao;
 	}

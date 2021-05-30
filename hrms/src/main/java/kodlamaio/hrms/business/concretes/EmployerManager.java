@@ -66,6 +66,10 @@ public class EmployerManager implements EmployerService {
 		
 		else if (!splitMail[1].equals(employer.getWebSite())) {
 			return new ErrorResult("Emailiniz Şirket Domainli Olmalıdır.");
+		}else if(!employer.getPassword().equals(employer.getPasswordAgain())) {
+			
+			return new ErrorResult("Şifre tekrarı uyuşmuyor.");
+			
 		}
 		
 	
