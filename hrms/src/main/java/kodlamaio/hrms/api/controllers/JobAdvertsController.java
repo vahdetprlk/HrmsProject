@@ -32,7 +32,7 @@ public class JobAdvertsController {
 	public DataResult<List<JobAdvert>> getAll(){
 		
 		
-		return this.jobAdvertService.getAllByActiveTrue();
+		return this.jobAdvertService.getAllByActiveTrue(true);
 	}
 	@PostMapping("/add")
 	public Result add(@RequestBody JobAdvert jobAdvert) {
@@ -55,11 +55,11 @@ public class JobAdvertsController {
 	}
 	
 	
-	@GetMapping("/getAllByEmployerIdAndActive")
-	public DataResult<List<JobAdvert>> getAllByEmployerIdAndActive(@RequestParam("id") int id,@RequestParam("isActive")boolean isActive){
+	@GetMapping("/getAllByEmployerIdAndActiveTrue")
+	public DataResult<List<JobAdvert>> getAllByEmployerIdAndActiveTrue(@RequestParam("id") int id,@RequestParam("isActive") boolean isActive){
 		
 		
-		return this.jobAdvertService.getAllByEmployerIdAndActive(id, isActive);
+		return this.jobAdvertService.getAllByEmployerIdAndActiveTrue(id, isActive);
 		
 	}
 	

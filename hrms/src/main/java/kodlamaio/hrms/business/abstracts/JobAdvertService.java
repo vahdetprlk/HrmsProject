@@ -11,11 +11,11 @@ public interface JobAdvertService {
 	
 	Result delete(JobAdvert jobAdvert);
 	
-	DataResult<List<JobAdvert>> getAllByActiveTrue();
+	DataResult<List<JobAdvert>> getAllByActiveTrue(boolean isActive);
 	
 	DataResult<List<JobAdvert>> getAllByActiveTrueAndSortedByCreatedDate();
 	
-	DataResult<List<JobAdvert>> getAllByEmployerIdAndActive(int id,boolean isActive);
+	DataResult<List<JobAdvert>> getAllByEmployerIdAndActiveTrue(int id,boolean isActive);
 	
 	
 }
