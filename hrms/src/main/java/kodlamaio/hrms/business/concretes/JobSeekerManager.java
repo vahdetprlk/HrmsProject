@@ -85,7 +85,7 @@ public class JobSeekerManager implements JobSeekerService {
 
 			}
 			
-			this.jobSeekerDao.save(jobSeeker);
+			this.jobSeekerDao.save(jobSeeker); 
 			return new SuccessResult("Kullanıcı İş Arayan Listesine Eklendi");
 
 		}
