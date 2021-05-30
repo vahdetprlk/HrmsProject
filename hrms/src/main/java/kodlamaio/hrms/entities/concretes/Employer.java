@@ -17,7 +17,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 @Data
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","systemEmployeeValidations"})
+
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","systemEmployeeValidations","jobAdverts"})
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -36,4 +38,8 @@ public class Employer extends User{
 	
 	@OneToMany(mappedBy = "employer")
 	private List<SystemEmployeeValidation> systemEmployeeValidations;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvert> jobAdverts;
+	
 }
