@@ -13,19 +13,19 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","emailVerifications"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "emailVerifications" })
 @Inheritance(strategy = InheritanceType.JOINED)
 
 public class User {
@@ -41,7 +41,7 @@ public class User {
 
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "password_again")
 	private String passwordAgain;
 
@@ -50,10 +50,8 @@ public class User {
 
 	@Column(name = "is_active")
 	private boolean isActive;
-	
-	
 
 	@OneToMany(mappedBy = "user")
 	private List<EmailVerification> emailVerifications;
-	
+
 }

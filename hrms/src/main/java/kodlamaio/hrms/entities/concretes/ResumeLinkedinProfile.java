@@ -22,30 +22,26 @@ import lombok.NoArgsConstructor;
 @Table(name = "resume_linkedin_profiles")
 
 public class ResumeLinkedinProfile {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
-		
+
 //	@Column(name = "resume_id")
 //	private int resumeId;
-	
+
 	@ManyToOne()
 	@JoinColumn(name = "resume_id")
 	private Resume resume;
-	
+
 	@Column(name = "url")
 	private String url;
-	
+
 	@Column(name = "created_date")
 	private LocalDate createdDate;
-	
+
 	@Column(name = "is_active")
 	private boolean isActive;
-			
+
 }
-
-
-

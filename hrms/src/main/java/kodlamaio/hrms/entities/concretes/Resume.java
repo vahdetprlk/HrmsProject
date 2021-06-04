@@ -24,10 +24,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "resumes")
-@JsonIgnoreProperties({ "hibernateLazyInitializer","handler",
-						"resumeEducationHistory","resumeWorkHistory",
-						"resumeSummary","resumeSkill","resumeLinkedinProfile",
-						"resumeGithubProfile","resumeLanguage","resumeImage"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "resumeEducationHistory", "resumeWorkHistory",
+		"resumeSummary", "resumeSkill", "resumeLinkedinProfile", "resumeGithubProfile", "resumeLanguage",
+		"resumeImage" })
 public class Resume {
 
 	@Id
@@ -65,8 +64,7 @@ public class Resume {
 
 	@OneToMany(mappedBy = "resume")
 	private List<ResumeLanguage> resumeLanguage;
-	
+
 	@OneToMany(mappedBy = "resume")
 	private List<ResumeImage> resumeImage;
 }
-
