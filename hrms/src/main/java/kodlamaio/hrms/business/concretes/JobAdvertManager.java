@@ -34,7 +34,7 @@ public class JobAdvertManager implements JobAdvertService{
 
 	@Override
 	public Result delete(JobAdvert jobAdvert) {
-		JobAdvert jobAdvertInDatabase = this.jobAdvertDao.getById(jobAdvert.getId());
+		JobAdvert jobAdvertInDatabase = this.jobAdvertDao.getOne(jobAdvert.getId());
 		jobAdvertInDatabase.setActive(false);
 		this.jobAdvertDao.save(jobAdvertInDatabase);
 		return new SuccessResult("İlan Pasif Duruma Alındı");
