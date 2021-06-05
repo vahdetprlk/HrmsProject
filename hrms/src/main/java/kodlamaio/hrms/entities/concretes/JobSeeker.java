@@ -2,8 +2,11 @@ package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
+
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -19,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "resume" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "resumes", "emailVerifications" })
 @Entity
 @Table(name = "job_seekers")
 @PrimaryKeyJoinColumn(name = "user_id")
@@ -37,7 +40,10 @@ public class JobSeeker extends User {
 	@Column(name = "national_id")
 	private String nationalId;
 
-	@OneToOne(mappedBy = "jobSeeker")
+	@OneToOne()
+	@PrimaryKeyJoinColumn
 	private Resume resume;
+	
+
 
 }
