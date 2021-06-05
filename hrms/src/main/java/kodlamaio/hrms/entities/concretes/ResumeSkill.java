@@ -11,41 +11,40 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-
 @Entity
-@Table(name = "email_verifications")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "resume_skills")
 
-public class EmailVerification {
+public class ResumeSkill {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	@Column(name = "id")
 	private int id;
 
-	// @ManyToOne
-	// @JoinColumn(name = "user_id")
-	// private User user;
-
-//	@Column(name = "user_id")
-//	private int userId;
-
-	@Column(name = "is_verified")
-	private boolean isVerified;
-
-	@Column(name = "activation_code")
-	private String activationCode;
-
-	@Column(name = "activation_date")
-	private LocalDate activationDate;
-
+//	@Column(name = "resume_id")
+//	private int resumeId;
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne()
-	@JoinColumn(name = "user_id")
-	private User user;
+	@JoinColumn(name = "resume_id")
+	private Resume resume;
+
+	@Column(name = "skill_name")
+	private String skillName;
+
+	@Column(name = "created_date")
+	private LocalDate createdDate;
+
+	@Column(name = "is_active")
+	private boolean isActive;
+
 }

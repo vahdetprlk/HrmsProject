@@ -14,8 +14,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-@EqualsAndHashCode(callSuper=false)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","systemEmployeeValidations"})
+
+@EqualsAndHashCode(callSuper = false)
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "systemEmployeeValidations" })
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,8 +31,7 @@ public class SystemEmployee extends User {
 
 	@Column(name = "last_name")
 	private String lastName;
-	
-	
+
 	@OneToMany(mappedBy = "systemEmployee")
 	private List<SystemEmployeeValidation> systemEmployeeValidations;
 
