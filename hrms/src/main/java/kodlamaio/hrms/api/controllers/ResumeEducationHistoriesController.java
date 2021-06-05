@@ -36,9 +36,9 @@ public class ResumeEducationHistoriesController {
 	
 	@GetMapping("/findAllByResumeJobSeekerUserIdOrderByGraduationEndDate")
 	
-	public DataResult<List<ResumeEducationHistory>> findAllByResume_JobSeeker_UserIdOrderByGraduationEndDate(@RequestParam int userId){
+	public DataResult<List<ResumeEducationHistory>> findAllByResume_JobSeeker_UserIdOrderByGraduationEndDateDesc(@RequestParam int userId){
 		
-		return this.resumeEducationHistoryService.findAllByResume_JobSeeker_UserIdOrderByGraduationEndDate(userId);
+		return this.resumeEducationHistoryService.findAllByResume_JobSeeker_UserIdOrderByGraduationEndDateDesc(userId);
 		
 	}
 	

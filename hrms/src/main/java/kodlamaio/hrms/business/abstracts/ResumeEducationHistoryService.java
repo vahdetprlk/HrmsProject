@@ -11,6 +11,6 @@ public interface ResumeEducationHistoryService {
 
 	DataResult<List<ResumeEducationHistory>> getAll();
 	Result add(ResumeEducationHistory resumeEducationHistory);
-	//DataResult<List<ResumeEducationHistory>> getAllSortedByGraduationEndDate();
-	DataResult<List<ResumeEducationHistory>> findAllByResume_JobSeeker_UserIdOrderByGraduationEndDate(int userId);
+	
+	DataResult<List<ResumeEducationHistory>> findAllByResume_JobSeeker_UserIdOrderByGraduationEndDateDesc(int userId);
 }

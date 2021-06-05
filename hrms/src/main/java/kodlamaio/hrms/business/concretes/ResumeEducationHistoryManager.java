@@ -3,7 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.ResumeEducationHistoryService;
@@ -14,12 +14,12 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ResumeEducationHistoryDao;
 
 import kodlamaio.hrms.entities.concretes.ResumeEducationHistory;
-@Service
-public class ResumeEducationHistoryManager implements ResumeEducationHistoryService{
 
-	
+@Service
+public class ResumeEducationHistoryManager implements ResumeEducationHistoryService {
+
 	private ResumeEducationHistoryDao resumeEducationHistoryDao;
-	
+
 	@Autowired
 	public ResumeEducationHistoryManager(ResumeEducationHistoryDao resumeEducationHistoryDao) {
 		super();
@@ -28,8 +28,9 @@ public class ResumeEducationHistoryManager implements ResumeEducationHistoryServ
 
 	@Override
 	public DataResult<List<ResumeEducationHistory>> getAll() {
-		
-		return new SuccessDataResult<List<ResumeEducationHistory>>(this.resumeEducationHistoryDao.findAll(), "Data Listelendi");
+
+		return new SuccessDataResult<List<ResumeEducationHistory>>(this.resumeEducationHistoryDao.findAll(),
+				"Data Listelendi");
 	}
 
 	@Override
@@ -39,25 +40,12 @@ public class ResumeEducationHistoryManager implements ResumeEducationHistoryServ
 	}
 
 	@Override
-	public DataResult<List<ResumeEducationHistory>> findAllByResume_JobSeeker_UserIdOrderByGraduationEndDate(
+	public DataResult<List<ResumeEducationHistory>> findAllByResume_JobSeeker_UserIdOrderByGraduationEndDateDesc(
 			int userId) {
-		
-		return new SuccessDataResult<List<ResumeEducationHistory>>(this.resumeEducationHistoryDao.findAllByResume_JobSeeker_IdOrderByGraduationEndDate(userId), "Başarılı");
+
+		return new SuccessDataResult<List<ResumeEducationHistory>>(
+				this.resumeEducationHistoryDao.findAllByResume_JobSeeker_IdOrderByGraduationEndDateDesc(userId),
+				"Başarılı");
 	}
 
-//	@Override
-//	public DataResult<List<ResumeEducationHistory>> getAllSortedByGraduationEndDate() {
-//		Sort sort = Sort.by(Sort.Direction.DESC,"graduationEndDate" );
-//		
-//		return new SuccessDataResult<List<ResumeEducationHistory>>(this.resumeEducationHistoryDao.findAll(sort), "Başarılı");
-//		
-		
-//	}
-	
 }
-				
-				
-				
-				
-				
-				

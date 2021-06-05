@@ -8,6 +8,6 @@ import kodlamaio.hrms.entities.concretes.ResumeEducationHistory;
 
 public interface ResumeEducationHistoryDao extends JpaRepository<ResumeEducationHistory, Integer> {
 
-	List<ResumeEducationHistory> findAllByResume_JobSeeker_IdOrderByGraduationEndDate(int userId);
+	List<ResumeEducationHistory> findAllByResume_JobSeeker_IdOrderByGraduationEndDateDesc(int userId);
 
 }
