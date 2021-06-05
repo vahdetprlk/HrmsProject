@@ -23,10 +23,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Table(name = "resumes")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler","jobSeeker", "resumeEducationHistories", "resumeWorkHistories",
-		"resumeSummaries", "resumeSkills", "resumeLinkedinProfiles", "resumeGithubProfiles", "resumeLanguages",
-		"resumeImages" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler"})
+//"resumeEducationHistories", "resumeWorkHistories",
+//		"resumeSummaries", "resumeSkills", "resumeLinkedinProfiles", "resumeGithubProfiles", "resumeLanguages",
+//		"resumeImages" })
 public class Resume {
 
 	@Id
@@ -40,9 +42,6 @@ public class Resume {
 
 	@Column(name = "is_active")
 	private boolean isActive;
-
-
-
 	
 	@ManyToOne()
 	@JoinColumn(name = "job_seeker_id")
