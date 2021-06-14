@@ -14,7 +14,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.core.utilities.services.ImageUploadService;
 import kodlamaio.hrms.dataAccess.abstracts.ResumeImageDao;
-import kodlamaio.hrms.entities.concretes.Resume;
+
 import kodlamaio.hrms.entities.concretes.ResumeImage;
 
 
