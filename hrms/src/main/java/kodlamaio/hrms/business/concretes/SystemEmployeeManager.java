@@ -46,7 +46,8 @@ public class SystemEmployeeManager implements SystemEmployeeService{
 			return new ErrorResult("Soyisim Bilgisi Giriniz");
 		
 	}else
-	
+		 
+		this.systemEmployeeDao.save(systemEmployee);
 		return new SuccessResult("Sistem Kullanıcısı Eklendi");
 	
 	}
