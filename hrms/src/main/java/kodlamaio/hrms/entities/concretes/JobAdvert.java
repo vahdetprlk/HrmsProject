@@ -38,8 +38,9 @@ public class JobAdvert {
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "city")
-	private String city;
+	@ManyToOne()
+	@JoinColumn(name = "city_id")
+	private City city;
 
 	@Column(name = "salary_min")
 	private double salaryMin;

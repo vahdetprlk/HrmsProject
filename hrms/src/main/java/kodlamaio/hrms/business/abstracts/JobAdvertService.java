@@ -17,5 +17,7 @@ public interface JobAdvertService {
 	
 	DataResult<List<JobAdvert>> getAllByEmployerIdAndActiveTrue(int id,boolean isActive);
 	
+	DataResult<JobAdvert> getById(int id);
+	
 	
 }

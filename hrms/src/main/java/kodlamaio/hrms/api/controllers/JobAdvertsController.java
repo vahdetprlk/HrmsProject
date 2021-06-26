@@ -65,6 +65,12 @@ public class JobAdvertsController {
 		
 	}
 	
+	@GetMapping("/getById")
+ 	 public DataResult<JobAdvert> getById(@RequestParam int id){
+		return this.jobAdvertService.getById(id);
+		
+	}
+	
 
 }
 

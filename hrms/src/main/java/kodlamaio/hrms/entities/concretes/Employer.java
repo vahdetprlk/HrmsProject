@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @Data
 
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "systemEmployeeValidations", "jobAdverts" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "systemEmployeeValidations", "jobAdverts", "emailVerifications"			})
 
 @NoArgsConstructor
 @AllArgsConstructor
