@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -52,7 +53,7 @@ public class JobAdvert {
 	private LocalDate applicationDeadline;
 
 	@Column(name = "created_date")
-	private LocalDate createdDate;
+	private LocalDate createdDate =LocalDate.now(); ;
 
 	@Column(name = "is_active")
 	private boolean isActive;
