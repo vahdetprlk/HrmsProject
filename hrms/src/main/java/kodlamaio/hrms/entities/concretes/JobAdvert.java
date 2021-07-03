@@ -75,6 +75,14 @@ public class JobAdvert {
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
 	
+	@ManyToOne()
+	@JoinColumn(name = "work_time")
+	private WorkTime workTime;
+	
+	@ManyToOne()
+	@JoinColumn(name = "work_type")
+	private WorkType workType;
+	
 	@OneToMany(mappedBy="jobAdvert")
 	private List<SystemEmployeeJobAdvertValidation> systemEmployeeJobAdvertValidations;
 }
