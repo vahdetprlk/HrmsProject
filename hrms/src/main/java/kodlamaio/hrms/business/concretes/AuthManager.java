@@ -76,7 +76,7 @@ public class AuthManager implements AuthService {
 		EmailVerification emailVerificationInDataBase = this.emailVerificationService.getByUserIdAndId(userId, id).getData();
 		emailVerificationInDataBase.setVerified(true);
 		this.emailVerificationService.update(emailVerificationInDataBase);
-
+ 
 		return new SuccessResult("Email Aktivasyonu Tamamlandı");
 	}
 }

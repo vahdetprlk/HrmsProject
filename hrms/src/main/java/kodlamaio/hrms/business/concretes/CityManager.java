@@ -25,4 +25,10 @@ public class CityManager implements CityService{
 		return new SuccessDataResult<List<City>>(this.cityDao.findAll(), "Data Listelendi");
 	}
 
+	@Override
+	public DataResult<City> getById(int id) {
+		
+		return new SuccessDataResult<City>(this.cityDao.getById(id), "Getirildi");
+	}
+
 }
