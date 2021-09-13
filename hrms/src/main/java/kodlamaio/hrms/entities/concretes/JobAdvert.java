@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -38,8 +39,9 @@ public class JobAdvert {
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "city")
-	private String city;
+	@ManyToOne()
+	@JoinColumn(name = "city_id")
+	private City city;
 
 	@Column(name = "salary_min")
 	private double salaryMin;
@@ -51,7 +53,7 @@ public class JobAdvert {
 	private LocalDate applicationDeadline;
 
 	@Column(name = "created_date")
-	private LocalDate createdDate;
+	private LocalDate createdDate =LocalDate.now(); ;
 
 	@Column(name = "is_active")
 	private boolean isActive;
@@ -72,6 +74,14 @@ public class JobAdvert {
 	@ManyToOne()
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
+	
+	@ManyToOne()
+	@JoinColumn(name = "work_time")
+	private WorkTime workTime;
+	
+	@ManyToOne()
+	@JoinColumn(name = "work_type")
+	private WorkType workType;
 	
 	@OneToMany(mappedBy="jobAdvert")
 	private List<SystemEmployeeJobAdvertValidation> systemEmployeeJobAdvertValidations;

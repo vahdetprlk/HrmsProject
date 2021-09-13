@@ -64,7 +64,15 @@ public class JobAdvertManager implements JobAdvertService{
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByEmployer_IdAndIsActive(id,isActive), "Data Listelendi");
 	}
 
+	@Override
+	public DataResult<JobAdvert> getById(int id) {
+		
+		return new SuccessDataResult<JobAdvert>(this.jobAdvertDao.getById(id), "Data Listelendi");
+	}
+
+
+
+
+
 
 }
-
-
